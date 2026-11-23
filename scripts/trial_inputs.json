@@ -1,0 +1,69 @@
+{
+  "_note": "Every number below was read from a source fetched on 2026-11-23. status: published = stated in the source; derived = computed here from published numbers; assumption = not published in any source reached, swept over the stated range.",
+  "sources": {
+    "rebuild_abstract": "Green AJ et al. Lancet 2017;390:2481-2489. PMID 29029896. doi:10.1016/S0140-6736(17)32346-2 (PubMed abstract; full text not reachable)",
+    "rebuild_registry": "ClinicalTrials.gov NCT02040298, posted results, record updated 2025-09-17. https://clinicaltrials.gov/study/NCT02040298",
+    "ccmr1_abstract": "Brown JWL, Cunniffe NG et al. Lancet Neurol 2021;20:709-720. PMID 34418398. doi:10.1016/S1474-4422(21)00179-4 (PubMed abstract; full text not reachable)",
+    "ccmr1_followup": "McMurran CE et al. Mult Scler 2024;30:1066-1071. PMID 38426437. doi:10.1177/13524585241233177 (PMC11290016, full text)",
+    "ccmr1_age": "Brain Commun 2025, fcaf032. PMID 40008332. doi:10.1093/braincomms/fcaf032 (PMC11852336, full text)",
+    "ccmr2_protocol": "Riboni-Verri G et al. Trials 2025;26:562. PMID 41361285. doi:10.1186/s13063-025-09254-2 (PMC12683890, full text)",
+    "ccmr2_conference": "ECTRIMS 2025 abstract 152/O133, as reported by https://conferences.medicom-publishers.com/specialisation/neurology/ectrims-2025/small-remyelinating-effect-of-metformin-plus-clemastine-2/ and https://www.tnnonline.nl/werkzaamheid-en-veiligheid-van-metformine-en-clemastine-bij-mensen-met-rrms/ (conference reports; no results paper found)",
+    "thomae2010": "Thomae E et al. J Clin Neurophysiol 2010;27:270-273. PMID 20634712. doi:10.1097/WNP.0b013e3181eaa9e3 (PubMed abstract)",
+    "wooliscroft2020": "Wooliscroft L et al. Mult Scler Relat Disord 2020;41:102015. PMID 32120028. doi:10.1016/j.msard.2020.102015 (PubMed abstract)"
+  },
+  "noise": {
+    "retest_sd_diff_low_ms": {"value": 3.85, "status": "published", "source": "thomae2010", "detail": "SD of P100 latency difference between two recordings about 2 days apart, 75 eyes of 39 patients, after blinded verification of cursor placement"},
+    "retest_sd_diff_unverified_ms": {"value": 8.02, "status": "published", "source": "thomae2010", "detail": "same, 77 eyes, before verification; not used in the sweep, shown for scale"},
+    "retest_sd_diff_high_ms": {"value": 6.5, "status": "published", "source": "wooliscroft2020", "detail": "SD of P100 difference between two visits one week apart, per eye, 15 people; 6.5 ms (17' checks), 6.3 ms (34' checks)"},
+    "planning_sd_ms": {"value": 5.0, "status": "published", "source": "ccmr2_protocol", "detail": "common SD of VEP change used for the sample size; the protocol says the ReBUILD value was about 4.1 ms and 20% was added"},
+    "retest_df": {"value": 38, "status": "derived", "source": "thomae2010", "detail": "39 patients minus 1; eyes of one person are not independent, so people are counted"}
+  },
+  "trials": {
+    "ReBUILD (clemastine)": {
+      "design": "crossover", "n": 50, "n_first": 25,
+      "n_source": {"status": "published", "source": "rebuild_abstract", "detail": "50 randomised, 25 per sequence, all completed"},
+      "outcome": "full-field VEP P100 latency, ms",
+      "effects": [
+        {"label": "crossover estimate", "value": -1.7, "status": "published", "source": "rebuild_abstract", "detail": "latency delay reduced by 1.7 ms/eye, 95% CI 0.5 to 2.9, p=0.0048"},
+        {"label": "delayed-treatment estimate", "value": -3.2, "status": "published", "source": "ccmr2_protocol", "detail": "the protocol paper quotes 3.2 ms for the ReBUILD delayed-treatment analysis"}
+      ],
+      "sd_sweep": [3.85, 5.0, 6.5],
+      "sd_status": {"status": "assumption", "detail": "the SD of the within-person treated-minus-control difference per participant is not published. Swept from the lowest to the highest published test-retest SD of differences, with the protocol planning SD in between. The registry reports per-eye change SDs of 6.85 ms (clemastine periods) and 3.86 ms (placebo periods), 93 eyes."},
+      "other_assumptions": ["one value per participant", "no carryover", "equal noise in both periods although they lasted 90 and 60 days"]
+    },
+    "CCMR One (bexarotene), lesional MTR": {
+      "design": "parallel", "n": 52, "n_first": 26,
+      "n_source": {"status": "published", "source": "ccmr1_abstract", "detail": "52 randomised, 26 per arm. The number analysed (completers) is not in the abstract; 26 per arm is an upper limit and an assumption."},
+      "outcome": "change in mean lesional MTR, percentage units (primary outcome)",
+      "effects": [
+        {"label": "adjusted difference", "value": 0.16, "status": "published", "source": "ccmr1_abstract", "detail": "0.16 pu, 95% CI -0.39 to 0.71, p=0.55"}
+      ],
+      "sd_sweep": [0.84],
+      "sd_status": {"status": "published", "source": "ccmr1_abstract", "detail": "SD of change 0.84 pu on placebo (0.98 pu on bexarotene)"},
+      "other_assumptions": ["26 analysed per arm"]
+    },
+    "CCMR One (bexarotene), VEP": {
+      "design": "parallel", "n": 28, "n_first": 14,
+      "n_source": {"status": "assumption", "source": "ccmr1_age", "detail": "the exploratory VEP effect is for eyes with baseline latency above 118 ms. A later paper counts 51 such eyes from 28 participants. The split between arms is not given; 14 and 14 is assumed."},
+      "outcome": "full-field VEP P100 latency, ms (exploratory outcome)",
+      "effects": [
+        {"label": "eyes with baseline above 118 ms", "value": -4.06, "status": "published", "source": "ccmr1_followup", "detail": "the follow-up paper quotes -4.06 ms for the original trial in these eyes; no CI given there"}
+      ],
+      "sd_sweep": [3.85, 5.0, 6.5],
+      "sd_status": {"status": "assumption", "detail": "SD of VEP change in this trial was not found in any source reached. Same sweep as above."},
+      "other_assumptions": ["one value per participant", "14 per arm"]
+    },
+    "CCMR Two (metformin + clemastine)": {
+      "design": "parallel", "n": 67, "n_first": 33,
+      "n_source": {"status": "published", "source": "ccmr2_conference", "detail": "70 randomised (34 active, 36 placebo), 33 and 34 completed"},
+      "outcome": "full-field VEP P100 latency, ms (primary outcome)",
+      "effects": [
+        {"label": "adjusted difference", "value": -1.2, "status": "published", "source": "ccmr2_conference", "detail": "-1.2 ms, 95% CI -2.4 to -0.1, p=0.042; conference report only"}
+      ],
+      "sd_sweep": [2.4, 3.85, 5.0, 6.5],
+      "sd_status": {"status": "assumption", "detail": "SD of change not reported. 2.4 ms is derived: the reported CI implies a standard error of 0.59 ms, which with 33 and 34 independent participants needs a residual SD of 2.4 ms. The trial analysed eyes and adjusted for covariates, so this is a lower limit, not a published SD. 5.0 ms is the protocol's planning value."},
+      "other_assumptions": ["one value per participant"]
+    }
+  },
+  "moderator_assumption": {"moderator_corr": 0.7, "status": "assumption", "detail": "for the moderator column only: responder status is tied to one of two pre-specified covariates with correlation 0.7 on the latent scale. Nothing published supports any particular value; 0.7 is a favourable case."}
+}

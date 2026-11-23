@@ -1,0 +1,13 @@
+trial,design,n,sd_change,method,responder_effect_for_80pct_power_in_sd,responder_effect_for_80pct_power,largest_multiple_tried
+ReBUILD (clemastine),crossover,50,5.0000,retest_f,2.5000,12.5000,6.0000
+ReBUILD (clemastine),crossover,50,5.0000,retest_known,2.0000,10.0000,6.0000
+ReBUILD (clemastine),crossover,50,5.0000,mixture_blrt,3.5000,17.5000,6.0000
+"CCMR One (bexarotene), lesional MTR",parallel,52,0.8400,variance_ratio_f,3.0000,2.5200,6.0000
+"CCMR One (bexarotene), lesional MTR",parallel,52,0.8400,brown_forsythe,3.0000,2.5200,6.0000
+"CCMR One (bexarotene), lesional MTR",parallel,52,0.8400,mixture_blrt,5.0000,4.2000,6.0000
+"CCMR One (bexarotene), VEP",parallel,28,5.0000,variance_ratio_f,3.5000,17.5000,6.0000
+"CCMR One (bexarotene), VEP",parallel,28,5.0000,brown_forsythe,3.5000,17.5000,6.0000
+"CCMR One (bexarotene), VEP",parallel,28,5.0000,mixture_blrt,6.0000,30.0000,6.0000
+CCMR Two (metformin + clemastine),parallel,67,5.0000,variance_ratio_f,2.5000,12.5000,6.0000
+CCMR Two (metformin + clemastine),parallel,67,5.0000,brown_forsythe,2.5000,12.5000,6.0000
+CCMR Two (metformin + clemastine),parallel,67,5.0000,mixture_blrt,4.0000,20.0000,6.0000
