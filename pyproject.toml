@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repairsplit"
+version = "0.1.0"
+description = "Did some trial participants respond and others not, or did everyone shift a little? Methods and known-answer tests for small myelin-repair trials."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Cedric Conday" }]
+dependencies = ["numpy>=1.24", "scipy>=1.10", "pandas>=2.0", "statsmodels>=0.14"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.4"]
+
+[project.scripts]
+repairsplit = "repairsplit.cli:main"
+
+[tool.setuptools]
+packages = ["repairsplit"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
