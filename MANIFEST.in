@@ -1,0 +1,4 @@
+include LICENSE README.md
+graft docs
+graft results
+global-exclude *.pyc

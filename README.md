@@ -17,7 +17,7 @@ latency in milliseconds, also MRI values per lesion. They are either two-arm par
 two-period crossovers.
 
 No participant-level data from these trials is public. It is available on request only (see
-[docs/DATA_ACCESS.md](docs/DATA_ACCESS.md)). So this version contains:
+`docs/DATA_ACCESS.md`). So this version contains:
 
 1. the methods;
 2. proof on simulated trials where the answer is known;
@@ -55,7 +55,7 @@ built to say who responded, and they cannot. A statement such as "about half of 
 respond" does not follow from trials like these. Neither does "everyone responds a little". The
 data cannot separate the two.
 
-Full tables, inputs and commands: [docs/VALIDATION.md](docs/VALIDATION.md).
+Full tables, inputs and commands: `docs/VALIDATION.md`.
 
 ## Generic power, known-answer test
 
@@ -111,8 +111,7 @@ included because fitting "responder" clusters is common, and its error rates sho
 ## Use
 
 ```
-python -m venv ~/.venvs/repairsplit
-~/.venvs/repairsplit/bin/pip install -e ".[dev]"
+pip install repairsplit
 
 # a simulated trial with a known answer
 repairsplit simulate --design parallel --n 60 --responder-share 0.5 --responder-effect -8 \
@@ -125,13 +124,13 @@ repairsplit analyze crossover.csv --retest-sd-diff 3.85 --retest-df 38
 ```
 
 Input is one tidy CSV: `participant`, `arm` or `sequence`, `period`, `baseline`, `outcome`, and
-any covariates. See [docs/DATA_FORMAT.md](docs/DATA_FORMAT.md). Add `--json` for machine-readable
+any covariates. See `docs/DATA_FORMAT.md`. Add `--json` for machine-readable
 output.
 
 ## Which inputs were assumptions
 
 Every trial number was read from a source fetched on 2026-11-23 and is listed with its source in
-[docs/VALIDATION.md](docs/VALIDATION.md). These were not published and were assumed, with a sweep:
+`docs/VALIDATION.md`. These were not published and were assumed, with a sweep:
 
 - The noise level: the SD of a change score, or of a within-person difference, per participant.
   Swept from 3.85 ms to 6.5 ms, the lowest and highest published test-retest SDs for P100
@@ -199,7 +198,7 @@ bibliographic record was read.
 - Multiplicity correction: Holm S. A simple sequentially rejective multiple test procedure.
   Scand J Stat 1979;6:65-70. JSTOR 4615733.
 
-Trial sources are cited in [docs/VALIDATION.md](docs/VALIDATION.md). Article metadata and
+Trial sources are cited in `docs/VALIDATION.md`. Article metadata and
 abstracts came from PubMed; open full texts came from PubMed Central.
 
 ## Licence
